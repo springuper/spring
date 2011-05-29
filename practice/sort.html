@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>sort</title>
+</head>
+<body>
+<h1>array management</h1>
+<table id="sortTable1">
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>David Chen</td>
+        <td>89</td>
+    </tr>
+    <tr>
+        <td>Avril</td>
+        <td>76</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        &#9654;&#9668;&#9668;&#9654;&#9658;&#9655;&#9665;
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+var arr = [3, 1, 2, 5, -2, 1, 10];
+
+// 快速排序
+function quickSort(a) {
+    if (a.length <= 1) return a;
+    var i = 0, j, tmp, pivot = a.pop();
+    for (j = 0; j < a.length; ++j) {
+        if (a[j] < pivot) {
+            tmp = a[j];
+            a[j] = a[i];
+            a[i] = tmp;
+            i++;
+        }
+    }
+    return quickSort(a.slice(0, i))
+        .concat(pivot)
+        .concat(quickSort(a.slice(i)));;
+}
+
+// 冒泡排序
+function bubbleSort(a) {
+    var i, j, tmp;
+    for (i = (a.length - 1); i > 0; --i) {
+        for (j = 0; j < i; ++j) {
+            if (a[j] > a[j + 1]) {
+                tmp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = tmp;
+            }
+        }
+    }
+    return a;
+}
+
+// 堆排序
+function heapify(a, i) {
+    var tmp, largestIndex = i;
+    if ((2 * i) <= a.length && a[2 * i - 1] > a[i - 1]) {
+        largestIndex = 2 * i;        
+    }
+    if ((2 * i + 1) <= a.length && a[2 * i] > a[largestIndex - 1]) {
+        largestIndex = 2 * i + 1;
+    }
+    if (largestIndex != i) {
+        tmp = a[largestIndex - 1];
+        a[largestIndex - 1] = a[i - 1];
+        a[i - 1] = tmp;
+        return heapify(a, largestIndex);
+    } else {
+        return a;
+    }
+}
+
+function heapSort(a) {
+    var i, tmp, res = [];
+    for (i = parseInt(a.length / 2, 10); i > 0; --i) {
+        a = heapify(a, i); 
+    }
+    for (i = a.length; i > 0; --i) {
+        tmp = a[i - 1];
+        a[i - 1] = a[0];
+        a[0] = tmp;
+        res.push(a.pop());
+        a = heapify(a, 1);
+    }
+    return res.reverse();
+}
+
+// console.log(heapSort(arr));
+</script>
+</body>
+</html>

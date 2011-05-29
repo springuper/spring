@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>array</title>
+</head>
+<body>
+<h1>Sandbox management全国</h1>
+<script type="text/javascript">
+// 根据模块组成一个对象
+function Sandbox(){
+    var args = Array.prototype.slice.call(arguments),
+        callback = args.pop(),
+        modules = (args[0] && typeof args[0] === 'string') ? args : args[0];
+    if (!(this instanceof Sandbox)) {
+        return new Sandbox(modules, callback);
+    }
+
+    if (!modules || modules === '*') {
+        modules = [];
+        for (var i in Sandbox.modules) {
+            if (Sandbox.modules.hasOwnProperty(i)) {
+                modules.push(i);
+            }
+        }
+    }
+
+    for (i = 0; i < modules.length; ++i) {
+        Sandbox.modules[modules[i]](this);
+    }
+
+    callback(this);
+}
+Sandbox.prototype = {
+    name:'my Application',
+    version:'1.0',
+    getName:function(){
+        return this.name;
+    }
+};
+Sandbox.modules = {};
+Sandbox.modules.dom = function(box){
+    box.getElement = function(){};
+    box.getStyle = function(){};
+};
+Sandbox.modules.event = function(box){
+    box.addEventListener = function(){};
+    box.removeEventListener = function(){};
+};
+Sandbox.modules.ajax = function(box){
+    box.makeRequest = function(){};
+    box.getRequest = function(){};
+};
+
+(function(){
+    var c = new Sandbox(['dom', 'event', 'ajax'], function(s){
+        console.log(s);
+    });
+    console.log(c);
+})();
+</script>
+</body>
+</html>

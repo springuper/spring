@@ -1,0 +1,25 @@
+<html>
+<head><title>event</title></head>
+<body>
+<form name="form1" method="post" action="">
+    <input name="ad" type="text" id="ad2">
+    <input type="submit" name="Submit" value="提交">
+</form>
+
+<form name="form2" method="post" action="">
+    <input name="ad" type="text" id="ad2">
+    <input type="submit" name="Submit2" value="提交">
+</form>
+<script>
+var form1 = document.form1;
+var submit1 = document.form1.Submit;
+document.addEventListener('click', function(){ alert('document'); }, false);
+form1.addEventListener('click', function(){ alert(this.name); }, true);
+form1.addEventListener('click', function(){ alert(this.nodeName); }, false);
+submit1.addEventListener('click', handle, true);
+function handle(){
+    alert(this.name);
+}
+</script>
+</body>
+</html>

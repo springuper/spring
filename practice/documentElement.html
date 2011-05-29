@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">   
+<head>   
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+<title>documentElement</title>   
+<style type="text/css">   
+body{margin:0;padding:0;font:12px/150% arial;}   
+</style>   
+<script type="text/javascript">   
+function a() {   
+    var scrollTop;   
+    var scrollLeft;   
+    if (typeof window.pageYOffset != 'undefined') {   
+        scrollTop = window.pageYOffset;   
+        scrollLeft = window.pageXOffset;   
+    }   
+    else if (typeof document.compatMode != 'undefined' &&  document.compatMode != 'BackCompat') {   
+        scrollTop = document.documentElement.scrollTop;   
+        scrollLeft = document.documentElement.scrollLeft;   
+    }   
+    else if (typeof document.body != 'undefined') {   
+        scrollTop = document.body.scrollTop;   
+        scrollLeft = document.body.scrollLeft;   
+    }    
+    var scrollHeight = document.documentElement.scrollHeight;   
+    var scrollWidth = document.documentElement.scrollWidth;   
+    var clientWidth = document.documentElement.clientWidth;   
+    var clientHeight = document.documentElement.clientHeight;   
+    var offsetWidth = document.documentElement.offsetWidth;   
+    var offsetHeight = document.documentElement.offsetHeight;   
+    var screenTop = window.screenTop;   
+    var screenBottom = window.screenBottom;   
+    var screenLeft = window.screenLeft;   
+    var sheight = window.screen.height;   
+    var swidth = window.screen.width;   
+    var availHeight = window.screen.availHeight;   
+    var availWidth = window.screen.availWidth;   
+    document.getElementById('scrollTop').value = scrollTop;   
+    document.getElementById('scrollLeft').value = scrollLeft;   
+    document.getElementById('scrollHeight').value = scrollHeight;   
+    document.getElementById('scrollWidth').value = scrollWidth;   
+    document.getElementById('clientWidth').value = clientWidth;   
+    document.getElementById('clientHeight').value = clientHeight;   
+    document.getElementById('offsetWidth').value = offsetWidth;   
+    document.getElementById('offsetHeight').value = offsetHeight;   
+    document.getElementById('screenTop').value = screenTop;   
+    document.getElementById('screenBottom').value = screenBottom;   
+    document.getElementById('screenLeft').value = screenLeft;   
+    document.getElementById('sheight').value = sheight;   
+    document.getElementById('swidth').value = swidth;   
+    document.getElementById('availHeight').value = availHeight;   
+    document.getElementById('availWidth').value = availWidth;   
+}   
+</script>   
+</head>   
+   
+<body>   
+<div style="width:400px;height:400px;margin:0 auto;font-size:12px;">   
+<center>   
+<table width="400" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;margin-top:20px;">   
+<tr>   
+<td width="187" align="right">scrollTop（滚动条卷过的高）：</td>   
+<td width="10"> </td>   
+<td width="209"><input type="text" name="scrollTop" id="scrollTop" /></td>   
+</tr>   
+<tr>   
+<td align="right">scrollLeft（滚动条卷过的宽）：</td>   
+<td> </td>   
+<td><input type="text" name="scrollLeft" id="scrollLeft" /></td>   
+</tr>   
+<tr>   
+<td align="right">scrollHeight（内容实际高度）：</td>   
+<td> </td>   
+<td><input type="text" name="scrollHeight" id="scrollHeight" /></td>   
+</tr>   
+<tr>   
+<td align="right">scrollWidth（内容实际宽度）：</td>   
+<td> </td>   
+<td><input type="text" name="scrollWidth" id="scrollWidth" /></td>   
+</tr>   
+<tr>   
+<td align="right">clientWidth（可见区域宽）：</td>   
+<td> </td>   
+<td><input type="text" name="clientWidth" id="clientWidth" /></td>   
+</tr>   
+<tr>   
+<td align="right">clientHeight（可见区域高）：</td>   
+<td> </td>   
+<td><input type="text" name="clientHeight" id="clientHeight" /></td>   
+</tr>   
+<tr>   
+<td align="right">offsetWidth（加滚动条宽？）：</td>   
+<td> </td>   
+<td><input type="text" name="offsetWidth" id="offsetWidth" /></td>   
+</tr>   
+<tr>   
+<td align="right">offsetHeight（加滚动条高？）：</td>   
+<td> </td>   
+<td><input type="text" name="offsetHeight" id="offsetHeight" /></td>   
+</tr>   
+<tr>   
+<td align="right">screenTop：</td>   
+<td> </td>   
+<td><input type="text" name="screenTop" id="screenTop" /></td>   
+</tr>   
+<tr>   
+<td align="right">screenBottom：</td>   
+<td> </td>   
+<td><input type="text" name="screenBottom" id="screenBottom" /></td>   
+</tr>   
+<tr>   
+<td align="right">screenLeft：</td>   
+<td> </td>   
+<td><input type="text" name="screenLeft" id="screenLeft" /></td>   
+</tr>   
+<tr>   
+<td align="right">sheight（分辨率高）：</td>   
+<td> </td>   
+<td><input type="text" name="sheight" id="sheight" /></td>   
+</tr>   
+<tr>   
+<td align="right">swidth（分分辨率宽）：</td>   
+<td> </td>   
+<td><input type="text" name="swidth" id="swidth" /></td>   
+</tr>   
+<tr>   
+<td align="right">availHeight：</td>   
+<td> </td>   
+<td><input type="text" name="availHeight" id="availHeight" /></td>   
+</tr>   
+<tr>   
+<td align="right">availWidth：</td>   
+<td> </td>   
+<td><input type="text" name="availWidth" id="availWidth" /></td>   
+</tr>   
+</table>   
+<a href="javascript:a()" style="height:20px;display:block;">内容高度是400PX，点击查看所有属性值</a>   
+</center>   
+</div>   
+</body>   
+</html>   

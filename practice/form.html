@@ -1,0 +1,23 @@
+<html>
+<head><title>form</title></head>
+<body>
+<form name="form1" method="post" action="">
+    <input name="ad" type="text" id="ad2" />
+    <input name="gender" type="radio" value="0" />male
+    <input name="gender" type="radio" value="1" />female
+    <input name="age" type="radio" value="1" />age
+    <input type="submit" name="Submit" value="提交" />
+</form>
+
+<form name="form2" method="post" action="">
+    <input name="ad" type="text" id="ad2">
+    <input type="submit" name="Submit2" value="提交">
+</form>
+<script>
+// radio 若只有一个，则只返回该元素，若有多个，则返回数组，已在IE6,7, FF, Chrome中测试
+alert(document.form1['gender'].length);
+alert(document.form1['age'].value);
+
+</script>
+</body>
+</html>

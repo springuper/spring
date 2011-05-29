@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>style</title>
+<style>
+body { margin:0; }
+#p { float:left; background:#0C0; }
+#d { float:left; width:100px; height:100px; margin:50px; padding:50px; border:#eee solid 10px; background:#ccc; }
+</style>
+</head>
+<body>
+<div id="p">
+    <div id="d">
+        DIV
+    </div>
+</div>
+<script type="text/javascript">
+var d = document.getElementById('d');
+
+console.log('offsetHeight:' + d.offsetHeight);
+console.log('clientHeight:' + d.clientHeight);
+console.log('offsetTop:' + d.offsetTop);
+console.log('clientTop:' + d.clientTop);
+
+</script>
+</body>
+</html>

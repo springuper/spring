@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>array</title>
+</head>
+<body>
+<h1>array management</h1>
+<table id="sortTable1">
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>David Chen</td>
+        <td>89</td>
+    </tr>
+    <tr>
+        <td>Avril</td>
+        <td>76</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        &#9654;&#9668;&#9668;&#9654;&#9658;&#9655;&#9665;
+        </td>
+    </tr>
+</table>
+<script>
+    var arr = [];
+    console.log(typeof arr);
+    console.log(arr instanceof Array);
+
+    var a = [1, 2];
+    // 引用
+    var c = a;
+    // 拷贝
+    var d = a.slice();
+    a.push(3);
+    console.log(c.length);
+    console.log(d.length);
+</script>
+</body>
+</html>

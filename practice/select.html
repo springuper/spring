@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>select</title>
+</head>
+<body>
+<h1>select management</h1>
+<div name="cascade-container">
+    <select name="province">
+        <option value="-1">----</option>
+        <option value="1">meituan</option>
+        <option value="2">fanfou</option>
+    </select>
+</div>
+<div id="cascade-container">
+    <select name="province">
+        <option value="1">meituan</option>
+        <option value="2">fanfou</option>
+        <option value="-1">----</option>
+    </select>
+    <p class="option">option</p>
+</div>
+<div class="cascade-container">
+    <select name="province">
+        <option value="2">fanfou</option>
+        <option value="-1">----</option>
+        <option value="1">meituan</option>
+    </select>
+</div>
+<p class="cascade-container">Spring framework</p>
+<script type="text/javascript" src="spring.js"></script>
+<script type="text/javascript">
+var el = Sp.D.$('#cascade-container select');
+Sp.E.listen(el, 'change', function(){
+    alert(this.value);
+});
+window.setTimeout(function(){
+    // el.options[2].selected = 'selected';
+    // 设置value可以改变selectedIndex和显示内容
+    el.value = "-1";
+    console.log(el.selectedIndex);
+}, 3000);
+</script>
+</body>
+</html>

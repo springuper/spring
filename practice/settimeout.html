@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>setTimeout</title>
+</head>
+<body>
+<h1>setTimeout management</h1>
+<input name="input" onkeydown="alert(this.value)" type="text" value="a" />
+<input type="button" value="click" id="btn" />
+
+<input onkeydown="var me=this; setTimeout(function(){alert(me.value)}, 0)" name="heha" type="text" value="a" />
+<script type="text/javascript">
+var btn = document.getElementById('btn');
+var i = 0;
+function loopness(){
+    while(i < 10000000){
+        i++;
+    }
+}
+btn.onclick = function(){
+    alert(i);
+};
+loopness();
+
+</script>
+</body>
+</html>

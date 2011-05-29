@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>event target</title>
+</head>
+<body>
+<h1>custom event</h1>
+<table id="sortTable1">
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>David Chen</td>
+        <td>89</td>
+    </tr>
+    <tr>
+        <td>Avril</td>
+        <td>76</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        &#9654;&#9668;&#9668;&#9654;&#9658;&#9655;&#9665;
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+function EventTarget() {
+    this.handlers = {};
+}
+EventTarget.prototype = {
+    constructor:EventTarget,
+    addHandler:function(type, handler) {
+        if (typeof this.handlers[type] === 'undefined') {
+            this.handlers[type] = [];
+        }
+        this.handlers[type].push(handler);
+    },
+    fire:function(event) {
+        if (!event.target) {
+            event.target = this;
+        }
+        if (this.handlers[event.type] instanceof Array) {
+            var handlers = this.handlers[event.type];
+            for (var i = 0, len = handlers.length; i < len; ++i) {
+                handlers[i](event);
+            }
+        }
+    },
+    removeHandler:function(type, handler) {
+        if (this.handlers[type] instanceof Array) {
+            var handlers = this.handlers[type];
+            for (var i = 0, len = handlers.length; i < len; ++i) {
+                if (handlers[i] === handler) {
+                    break;
+                }
+            }
+            handlers.splice(i, 1);
+        }
+    }
+};
+
+function handleChange(e) {
+    console.log('e.msg = ', e.msg);
+}
+
+var et = new EventTarget();
+et.addHandler('ce', handleChange);
+et.fire({ type:'ce', msg:'hi, i\'m spring!' });
+et.removeHandler('ce', handleChange);
+et.fire({ type:'ce', msg:'hi, i\'m spring!' });
+
+</script>
+</body>
+</html>

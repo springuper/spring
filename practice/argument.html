@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>select</title>
+</head>
+<body>
+<h1>select management</h1>
+<div name="cascade-container">
+    <select name="province">
+        <option value="-1">----</option>
+        <option value="1">meituan<option>
+        <option value="2">fanfou<option>
+    </select>
+</div>
+<div id="cascade-container">
+    <select name="province">
+        <option value="1">meituan<option>
+        <option value="2">fanfou<option>
+        <option value="-1">----</option>
+    </select>
+    <p class="option">option</p>
+</div>
+<div class="cascade-container">
+    <select name="province">
+        <option value="2">fanfou<option>
+        <option value="-1">----</option>
+        <option value="1">meituan<option>
+    </select>
+</div>
+<p class="cascade-container">Spring framework</p>
+<script type="text/javascript">
+function foo() {
+    var a = Array.prototype.slice.call(arguments);
+    alert(a.length);
+}
+foo(1, 2, 3, 4, 5);
+var all = document.getElementsByTagName('*');
+foo(all);
+var a = Array.prototype.slice.call(all);
+alert(a.length);
+</script>
+</body>
+</html>

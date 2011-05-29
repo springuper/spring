@@ -1,0 +1,51 @@
+<html>
+<head><title>DOM</title></head>
+<body>
+<h1>DOM management</h1>
+<div id="father">
+    <ul>
+        <li>spring</li>
+        <li>bin</li>
+        <li>meituan</li>
+    </ul>
+</div>
+<script type="text/javascript" src="spring.js"></script>
+<script>
+// real array, not NodeList 
+var list = Sp.D.$('#father ul li');
+var firstItem = list[0];
+// 移除子节点只是将其位置变更，仍然在文档中，可以访问 
+firstItem.parentNode.removeChild(firstItem);
+console.log(list.length); // '3'
+console.log(firstItem.firstChild.data); // 'spring'
+
+// dynamic NodeList
+var lis = document.getElementsByTagName('li');
+var firItem = lis[0];
+// 移除子节点只是将其位置变更，仍然在文档中，可以访问 
+firItem.parentNode.removeChild(firItem);
+console.log(lis.length); // '1'
+console.log(firItem.firstChild.data); // 'bin'
+
+// childNodes  保存着一个NodeList对象，live
+// previousSibling, nextSibling, parentNode, childNodes, firstChild, lastChild
+// hasChildNodes()
+// ownerDocument
+
+// appendChild(newNode)                 return newNode
+// insertBefore(newNode, oldNode|null)  return newNode
+// replaceChild(newNode, oldNode)       return oldNode
+// removeChild(node)                    return node 
+// cloneNode(bool)                      return clone node
+
+// document.URL
+// document.referer
+// document.domain
+
+// getElementById(id)   id严格匹配 IE中注意id与name相同的问题
+// getElementsByTagName(tagName)    return HTMLCollection, 较NodeList多一个namedItem方法
+// document.anchors, document.forms, document.images, document.links都是HTMLCollection对象
+// Element对象的attributes属性保存一个NamedNodeMap对象
+</script>
+</body>
+</html>
