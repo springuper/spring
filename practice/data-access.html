@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>data-access</title>
+</head>
+<body>
+<h1>Table management</h1>
+<table id="sortTable1">
+    <tr>
+        <th>IE6</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>IE7</td>
+        <td>201</td>
+    </tr>
+    <tr>
+        <td>Chrome</td>
+        <td>1.58</td>
+    </tr>
+    <tr>
+        <td>FireFox</td>
+        <td>1.14</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        &#9654;&#9668;&#9668;&#9654;&#9658;&#9655;&#9665;
+        </td>
+    </tr>
+</table>
+<script type="text/javascript" src="spring.js"></script>
+<script>
+var test = 'global';
+function outer() {
+    var test = 'outer';
+
+    return function() {
+        var test = 'middle';
+
+        return function() {
+            var test = 'inner';
+            //var body = document.body;
+        };
+    };
+}
+var elTitle = $('h1');
+
+var timing = Spring.Lang.timing();
+var sum = 0, cases = 100;
+for (var i = cases; i; --i) {
+    sum += timing.span(); 
+    for (var j = 10000; j; --j) {
+        outer()()();
+    }
+}
+elTitle.innerHTML = sum / cases;
+</script>
+</body>
+</html>
