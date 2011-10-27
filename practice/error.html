@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>Error</title>
+<script>
+// 打印错误
+function printError(info, type) {
+    var el = document.createElement('p');
+    el.innerHTML = type + ': ' + info;
+    document.body.appendChild(el);
+}
+
+window.onerror = function() {
+    var info = [];
+    for (var i = 0, len = arguments.length; i < len; ++i) {
+        info.push(arguments[i]); 
+    }
+    printError(info.join(', '), 'window.onerror');
+};
+</script>
+</head>
+<body>
+<h1>Table management</h1>
+<img src="/spring/a.jpg" />
+<script type="text/javascript" src="abc.js"></script>
+<script>
+var testOnerror = false;
+if (testOnerror) {
+    window.onload = function() {
+        delayCode.error = null;
+    };
+    sequentCode.error = null;
+} else {
+    try {
+        window.onload = function() {
+            delayCode.error = null;
+        };
+        sequentCode.error = null;
+    } catch(ex) {
+        printError(ex.toString(), 'try-catch');
+    }
+}
+
+/*
+Chrome:
+try-catch: ReferenceError: sequentCode is not defined
+window.onerror: Uncaught ReferenceError: delayCode is not defined, http://localhost/spring/practice/error.html, 35
+
+FireFox:
+window.onerror: Error loading script, http://localhost/spring/practice/abc.js, 1
+try-catch: ReferenceError: sequentCode is not defined
+window.onerror: delayCode is not defined, http://localhost/spring/practice/error.html, 35
+
+IE6:
+try-catch: [object Error]
+window.onerror: 'delayCode' is undefined, file://C:\Documents and Settings\xp\Desktop\error.html, 35
+
+IE7:
+window.onerror: Invalid character, file:///C:/Documents%20and%20Settings/xp/Desktop/error.html, 2
+try-catch: [object Error]
+window.onerror: 'delayCode' is undefined, file:///C:/Documents%20and%20Settings/xp/Desktop/error.html, 35
+*/
+</script>
+</body>
+</html>
