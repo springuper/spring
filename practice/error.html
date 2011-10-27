@@ -17,6 +17,8 @@ window.onerror = function() {
         info.push(arguments[i]); 
     }
     printError(info.join(', '), 'window.onerror');
+    // 返回true，停止错误事件传播到浏览器
+    return true;
 };
 </script>
 </head>
