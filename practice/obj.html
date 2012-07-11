@@ -62,6 +62,103 @@ delete o.c;
 console.log(s); // outputs '{ obj:{} }'
 console.log(r); // outputs '{ method:function(), property:'property', obj:{} }'
 
+
+(function() {
+    console.log('-----test for in loop-----');
+    var arr = [1, 2];
+    var obj = { name: 'spring', gender: 'male' };
+    var sup = function() {
+        this.name = 'spring';
+    };
+    sup.prototype = {
+        getName: function() { return this.name; }
+    };
+    var sub = function() {
+        this.gender = 'male';
+    }
+    sub.prototype = new sup();
+    sub.prototype.getGender = function() { return this.gender; };
+
+    var arrProperties = [];
+    for (var p in arr) {
+        arrProperties.push(p);
+    }
+    var objProperties = [];
+    for (var p in arr) {
+        objProperties.push(p);
+    }
+    var subProperties = [];
+    for (var p in (new sub())) {
+        subProperties.push(p);
+    }
+
+    console.log(arr);
+    console.log(arrProperties);
+    console.log(obj);
+    console.log(objProperties);
+    console.log(new sub());
+    console.log(subProperties);
+    //[[DONOTENUM]]
+})();
+
+(function() {
+    console.log('-----test augment-----');
+    var sup = function() {
+        this.name = 'spring';
+    };
+    sup.prototype = {
+        getName: function() {
+            return this.name;
+        }
+    };
+    var sub = function() {
+        this.gender = 'male';
+    }
+    sub.prototype.getGender = function() {
+        return this.gender;
+    };
+
+    var augment = function (receiver, supplier, args) {
+        var rProto    = receiver.prototype,
+            sProto    = supplier.prototype,
+            copy,
+            property,
+            newPrototype = {};
+
+        args = args ? Y.Array(args) : [];
+
+        copy = function (value, key) {
+            if (!(key in rProto)) {
+                if (Object.prototype.toString.call(value) === '[object Function]') {
+                    newPrototype[key] = function () {
+                        // Execute the supplier constructor.
+                        supplier.apply(this, args);
+
+                        // Execute the original function.
+                        return value.apply(this, arguments);                
+                    };
+                } else {
+                    newPrototype[key] = value;
+                }
+            }
+        };
+
+        for (property in sProto) {
+            copy.call(null, sProto[property], property);
+        }
+
+        for (property in newPrototype) {
+            rProto[property] = newPrototype[property];
+        }
+
+        return receiver;
+    };
+
+    augment(sub, sup);
+    var ins = new sub();
+    console.log(ins);
+    console.log(ins.getName());
+})();
 </script>
 </body>
 </html>

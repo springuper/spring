@@ -1,66 +1,12 @@
 <!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-<title>array</title>
 </head>
 <body>
-<h1>Table management</h1>
-<table id="sortTable1">
-    <tr>
-        <th>Name</th>
-        <th>Score</th>
-    </tr>
-    <tr>
-        <td>David Chen</td>
-        <td>89</td>
-    </tr>
-    <tr>
-        <td>Flanagan</td>
-        <td>92</td>
-    </tr>
-    <tr>
-        <td>Avril</td>
-        <td>76</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        &#9654;&#9668;&#9668;&#9654;&#9658;&#9655;&#9665;
-        </td>
-    </tr>
-</table>
+<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
 <script type="text/javascript">
-// 对象属性中保存的为基础数据类型或复杂数据类型（元对象）的引用
-// 对元对象属性的操作会影响所有以其为属性的对象
-var s = {};
-s.method = function(){ 
-    console.log('beauty'); 
-};
-s.property = 'property';
-s.obj = { good:'day' };
-
-var r = {};
-r.method = s.method;
-r.property = s.property;
-r.obj = s.obj;
-
-delete s.method;
-delete s.property;
-delete s.obj;
-
-console.log(s); // outputs '{}'
-console.log(r); // outputs '{ method:function(), property:'property', obj:{}}'
-
-
-var o = { s:1, b:2, c:3 };
-s.obj = o;
-delete o.s;
-console.log(s); // outputs '{ obj:{ b:2, c:3 } }'
-r.obj = s.obj;
-delete o.b;
-delete o.c;
-console.log(s); // outputs '{ obj:{} }'
-console.log(r); // outputs '{ method:function(), property:'property', obj:{} }'
+BAIDU_CLB_preloadSlots("230935");
 </script>
+<script type="text/javascript">BAIDU_CLB_fillSlot("230935");</script>
 </body>
 </html>
