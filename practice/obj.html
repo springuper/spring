@@ -159,6 +159,25 @@ console.log(r); // outputs '{ method:function(), property:'property', obj:{} }'
     console.log(ins);
     console.log(ins.getName());
 })();
+
+(function() {
+    function Car(name) {
+        this.name = name;
+    }
+    Car.prototype.wheel = 'round';
+    var car = new Car('bmw');
+
+    console.log('without hasOwnProperty:');
+    for (var p in car) {
+        console.log(p); // name, wheel
+    }
+    console.log('hasOwnProperty:');
+    for (var p in car) {
+        if (car.hasOwnProperty(p)) {
+            console.log(p); // name
+        }
+    }
+})();
 </script>
 </body>
 </html>

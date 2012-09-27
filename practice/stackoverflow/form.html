@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+<table width="600" border="0" align="left">
+    <tr>
+    <script type="text/javascript">
+        function previewPrint()
+        {
+
+            var RegNumber = document.getElementById('PP_RegNoTextBox').value;
+            var PassportNo = document.getElementById('PP_PassportNoTextBox').value;
+            if (RegNumber=="")
+            {
+                alert("Please enter your Reg No.!");
+                //document.getElementById('RegNoTextBox').focus();
+                return false;
+            }
+            if (PassportNo=="")
+            {
+                alert("Please enter your Passport No.!");
+                //document.getElementById('PassportNoTextBox').focus();
+                return false;
+            }
+            //window.open('regformview.php?RegNumber=RegNumber');
+        }
+    </script>
+        <form name="ppform" onSubmit="return previewPrint();" method="post" action="regformview.php">   
+        <td width="100" align="LEFT" class="font9">&nbsp; </td>
+        <td width="337" align="LEFT" class="font8"><u>Preview your Application:</u> Please provide requested details.<br>
+        Reg No.: <input type="text" name="printregno" id="PP_RegNoTextBox" class="input2"> Passport No.:  <input type="text" name="printemail" class="input2"><input type="hidden" name="flagging" id="PP_PassportNoTextBox" value="1" class="input2">&nbsp;</td>
+        <td width="50" align="LEFT" class="font8"><div style="float:left; background-image:url(images/printPreview1.jpg); background-repeat:no-repeat;">   
+        <input type="image" src="images/printPreview1.jpg" name="ppbutton" value="" onMouseOver="this.src='images/printPreview2.jpg'" onMouseOut="this.src='images/printPreview1.jpg'"></div></td>
+
+        </form>
+    </tr>
+</table>
+</body>
+</html>

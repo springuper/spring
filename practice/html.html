@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>HTML</title>
+<style type="text/css">
+body { line-height:1.5; }
+ul, ol { font-size:32px; }
+
+.block1 { padding:10px; background:#080; color:white; font-size:32px; }
+.block2 { margin-bottom:50px; padding:10px; background:#008; color:white; font-size:32px; }
+.inline1 { background:#080; color:white; font-size:32px; }
+.inline2 { background:#008; color:white; font-size:32px; }
+
+#brand { width:200px; margin:50px; padding-bottom:10px; border:3px solid #89B4D6; background:#EFF8FF; }
+#brand h3 { margin:0 0 5px; font-size:24px; text-indent:8px; border-bottom:1px white solid; background:-webkit-gradient(linear,0 0,0 100%,from(white),to(#EAECEC)); }
+#brand p { margin:0; padding-left:8px; }
+</style>
+</head>
+<body>
+<h1>Title1</h1>
+<h2>Title2</h2>
+<h3>Title3</h3>
+<h4>Title4</h4>
+<h5>Title5</h5>
+<h6>Title6</h6>
+
+<ul>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li>list item 3</li>
+</ul>
+
+<ol>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li>list item 3</li>
+</ol>
+
+<div class="block1">block 1</div>
+<div class="block2">block 2</div>
+
+<span class="inline1">inline 1</span>
+<span class="inline2">inline 2</span>
+
+<div id="brand">
+    <h3>美团</h3>
+    <p class="content">巴拉巴拉</p>
+</div>
+
+<div>
+    <h3>美团</h3>
+    <p>巴拉巴拉</p>
+</div>
+<script type="text/javascript">
+function appendParagraph(elParent) {
+    var el = document.createElement('p');
+    el.innerHTML = 'this is a new element created by javascript!';
+    el.style.color = 'red';
+    elParent.appendChild(el);
+}
+
+var elBrand = document.getElementById('brand');
+appendParagraph(elBrand);
+</script>
+</body>
+</html>

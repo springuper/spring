@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>Function</title>
+</head>
+<body>
+<h1>Table management</h1>
+<table id="sortTable1">
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>David Chen</td>
+        <td>89</td>
+    </tr>
+    <tr>
+        <td>Flanagan</td>
+        <td>92</td>
+    </tr>
+    <tr>
+        <td>Avril</td>
+        <td>76</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        &#9654;&#9668;&#9668;&#9654;&#9658;&#9655;&#9665;
+        </td>
+    </tr>
+</table>
+<script>
+function foo(arg) {
+    if (!arg) {
+        return {
+            name: 'spring',
+            gender: 'male'
+        };
+    }
+    this.name = 'lizhiye';
+}
+console.log(new foo());
+console.log(new foo(1));
+console.log(foo(1));
+console.log(window);
+
+function testName(name1, name2) {
+    function name1() {}
+    var name2;
+    console.log(name1);
+    console.log(name2);
+}
+testName(1, 2);
+
+function outter() {
+    inner();
+    // jslint won't approve this way
+    return;
+
+    function inner() {
+        alert('hello, world!');
+    }
+}
+</script>
+</body>
+</html>
