@@ -46,7 +46,20 @@ function Promise(fn) {
         });
     }
 
-    fn(resolve, reject);
+    doResolve(fn, resolve, reject);
+}
+
+function doResolve(fn, resolve, reject) {
+    var done = false;
+    fn(function () {
+        if (done) return;
+        done = true;
+        resolve();
+    }, function () {
+        if (done) return;
+        done = true;
+        reject();
+    });
 }
 
 module.exports = Promise;
